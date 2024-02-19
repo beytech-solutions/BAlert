@@ -1,0 +1,16 @@
+FROM python:3.9
+
+ENV PYTHONUNBUFFERED 1
+
+WORKDIR /code
+
+COPY requirements.txt /code/
+
+# Install Node.js and npm using NVM
+RUN curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.0/install.sh | bash && \
+    export NVM_DIR="$HOME/.nvm" && [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" && \
+    nvm install node
+
+RUN pip install -r requirements.txt
+
+COPY . /code/

@@ -1,0 +1,9 @@
+{% extends 'base.html' %}{% load django_vite %}
+{% block title %}BAlert{% endblock %}
+{% block head_js %}
+    {% vite_hmr_client %}
+    {% vite_asset 'js/main.jsx' %}
+{% endblock %}
+{% block content %}
+    {% include "components/nav.html" with btn_text="connected" %}
+{% endblock %}
